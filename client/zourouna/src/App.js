@@ -1,11 +1,19 @@
 
+import Home from './pages/home/Home';
+import TopBar from './topbar/TopBar';
+import Header from './header/Header';
+import Sidebar from './sidebar/Sidebar'
 
 function App() {
   return (
-    <div className="App">
-      <h1>hi</h1>
-      <h2>karrrouyna </h2>
-    </div>
+    <>
+     <TopBar/>
+     <Home/>
+     <Header/>
+     <Sidebar/>
+    
+
+    </>
   );
 }
 
