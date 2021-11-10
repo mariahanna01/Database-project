@@ -1,8 +1,8 @@
 
-import Home from './pages/home/Home';
-import TopBar from './topbar/TopBar';
-import Header from './header/Header';
-import Sidebar from './sidebar/Sidebar'
+import Home from './Components/pages/home/Home';
+import TopBar from './Components/TopBar/TopBar';
+import Header from './Components/header/Header';
+import Sidebar from './Components/sidebar/Sidebar'
 
 function App() {
   return (
