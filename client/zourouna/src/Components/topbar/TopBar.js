@@ -1,10 +1,11 @@
 
 import React from'react'
 import "./topbar.css"
-
+import { Link} from 'react-router-dom'
 
 export default function TopBar(){
     return(
+        
         <div className= 'top'>
             <div className ="topIcon">
             <i className="fab fa-facebook-f"></i>
@@ -17,11 +18,18 @@ export default function TopBar(){
             </div>
             <div className="topCenter">
                 <ul className="topList">
-                <li className="topListItem">VILLAGES</li>
+                <Link to="/villages" >
+                <li className="topListItem"> VILLAGES</li>
+                </Link>
+                <Link to="/about">
                     <li className="topListItem">ABOUT</li>
+                    </Link>
+                    <Link to="/contact">
                     <li className="topListItem">CONTACT</li>
+                    </Link>
+                    <Link to="/signin">
                     <li className="topListItem">SIGN IN</li>
-                    
+                    </Link>
 
                 </ul>
             </div>
@@ -38,6 +46,6 @@ export default function TopBar(){
             </div>
 
         </div>
-
+       
     )
 }
