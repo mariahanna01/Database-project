@@ -8,17 +8,18 @@ import {SignIn} from './Components/SignIn/SignIn';
 import HomePage from './HomePage';
 import {withRouter} from 'react-router';
 import Header from './Components/header/Header';
+import TopBar from './Components/topbar/TopBar';
 function App() {
   return (
     <Router>
        <div className="App">
-      <HomePage/>
+      <TopBar/>
       <Routes>
-        <Route exact path="/" component={withRouter(Header)}/>
-<Route path="/villages" component={withRouter(Villages)}/> 
-<Route path="/about" component={About}/>
-<Route path="/contact" component={Contact}/>
-<Route path="/signin" component={SignIn}/> 
+        <Route exact path="/" element={<Header/>}/>
+<Route path="/villages" element={<Villages/>}/>
+<Route path="/about"  element={<About/>}/>
+<Route path="/contact"  element={<Contact/>}/>
+<Route path="/signin"  element={<SignIn/>}/> 
    </Routes> 
     </div>
     </Router>
