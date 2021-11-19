@@ -18,16 +18,16 @@ export default function TopBar(){
             </div>
             <div className="topCenter">
                 <ul className="topList">
-                <Link to="/villages" >
+                <Link to="/villages" style={{ textDecoration: 'none' ,color:'black'}}>
                 <li className="topListItem"> VILLAGES</li>
                 </Link>
-                <Link to="/about">
+                <Link to="/about"style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">ABOUT</li>
                     </Link>
-                    <Link to="/contact">
+                    <Link to="/contact" style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">CONTACT</li>
                     </Link>
-                    <Link to="/signin">
+                    <Link to="/signin"style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">SIGN IN</li>
                     </Link>
 
