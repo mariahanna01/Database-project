@@ -1,5 +1,5 @@
 
-import React from 'react';
+import {React,useState} from 'react';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import  Villages  from './Components/Villages/Villages';
 import {About} from './Components/About/About';
@@ -11,10 +11,12 @@ import Header from './Components/header/Header';
 import TopBar from './Components/topbar/TopBar';
 import SignUp from './Components/SignUp/SignUp';
 function App() {
+  const [firstName,setFirstName]= useState('Maria')
+  const[signIn,setSignIn]= useState('true')
   return (
     <Router>
        <div className="App">
-      <TopBar/>
+      <TopBar firstName={firstName} signIn={signIn}/>
       <Routes>
         <Route exact path="/" element={<Header/>}/>
 <Route path="/villages" element={<Villages/>}/>

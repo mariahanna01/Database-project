@@ -3,7 +3,13 @@ import React from'react'
 import "./topbar.css"
 import { Link} from 'react-router-dom'
 
-export default function TopBar(){
+export default class TopBar extends React.Component{
+
+    constructor(props){
+super(props)
+
+    }
+    render(){
     return(
         
         <div className= 'top'>
@@ -27,9 +33,12 @@ export default function TopBar(){
                     <Link to="/contact" style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">CONTACT</li>
                     </Link>
-                    <Link to="/signin"style={{ textDecoration: 'none' ,color:'black'}}>
+                    {this.props.signIn==='false'?  <Link to="/signin"style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">SIGN IN</li>
-                    </Link>
+                    </Link> :  <Link to="/" style={{ textDecoration: 'none' ,color:'black'}}>
+                    <li className="topListItem">SIGN OUT</li>
+                    </Link> }
+                   
 
                 </ul>
             </div>
@@ -41,11 +50,12 @@ export default function TopBar(){
                 alt="" 
                 />
                 <i className="topSearchIcon fas fa-search-location"></i>
-
+{this.props.signIn==='true'? <h2 className="welcome">Welcome, {this.props.firstName} </h2> : null }
                 
             </div>
 
         </div>
        
     )
+}
 }
