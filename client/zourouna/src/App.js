@@ -11,7 +11,7 @@ import Header from './Components/header/Header';
 import TopBar from './Components/topbar/TopBar';
 import SignUp from './Components/SignUp/SignUp';
 function App() {
-  const [firstName,setFirstName]= useState('Maria')
+  const [firstName,setFirstName]= useState('Chloe')
   const[signIn,setSignIn]= useState('true')
   return (
     <Router>
