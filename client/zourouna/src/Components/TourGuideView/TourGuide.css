@@ -1,0 +1,25 @@
+.anything{
+    margin:20px;
+    justify-content: center;
+}
+.createPlan{
+margin:20px;
+border:2px solid midnightblue;
+
+    
+}
+.editPlan{
+    margin:20px;
+    border:2px solid midnightblue;
+}
+
+.booked{
+    margin: 20px;
+    border:2px solid midnightblue;
+}
+.headers{
+    font-size: 20px;
+    font-weight:bold;
+    color:midnightblue;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -13,36 +13,34 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import Axios from 'axios';
-import App from '../../App';
+import{useNavigate} from 'react-router-dom'
 const theme = createTheme();
 
 
 
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+
   const [firstName,setFirstName]=React.useState('');
   const [lastName,setLastName]=React.useState('');
   const [email,setEmail]=React.useState('');
   const [password,setPassword]=React.useState('');
-  
+  const navigate=useNavigate();
   const signUp=()=>{
-    Axios.post('http://localhost:3007/create',{firstName:firstName,
+    Axios.post('http://localhost:3050/create',{firstName:firstName,
     lastName:lastName,
     email:email,
-    password:password}).then(response=>{
-      console.log(response)
-    }).catch(error=>{
-      console.log(error.response)
-    })
+    password:password}).then(
+    
+    
+    
+    )
+    localStorage.setItem('name',firstName);
+    localStorage.setItem('loggedIn','true');
+    
+    navigate('/')
+ console.log('nav')
+ window.location.reload(false);
   }
 
 
@@ -65,7 +63,7 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate  sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -123,7 +121,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               onClick={signUp}
-              component={ App}
+            
             >
               Sign Up
             </Button>

@@ -1,13 +1,16 @@
 .post{
-    width:385px;
+    width:350px;
     margin:0px 25px 40px 25px;
-
+    
+       
 }
+
 .postImg{
-    width: 110%;
-    height:280 px;
+    width: 100%;
+    height:250px;
     object-fit:cover;
     border-radius: 8px;
+    
 }
 
 .postCat{
@@ -43,7 +46,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display:-webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     
+}
+.MyPosts{
+    flex:9;
+    display: flex;
+    flex-wrap: wrap;
+ 
+    margin:20px;
+   width:1400px;
+   height:100%;
+   align-items: center;
 }

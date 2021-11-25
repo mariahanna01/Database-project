@@ -13,23 +13,42 @@ import { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SignUp from '../SignUp/SignUp';
-
+import Axios  from 'axios';
+import Villages from '../Villages/Villages';
+import{useNavigate} from 'react-router-dom'
 
 
 const theme = createTheme();
 
-export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
 
-  const [email,setEmail]=useState('')
+export default function SignIn() {
+   const [email,setEmail]=useState('');
+   const [password,setPass]=useState('');
+   const [firstName,setFirstName]=useState('');
+   const [loggedIn,setLoggedIn]=useState('');
+   const navigate=useNavigate();
+
+
+ const signInClient=()=>{
+
+  Axios.post('http://localhost:3050/signInClient',{
+    email:email,
+    password:password
+  }).then((response)=>{
+    if(response.data){
+     setFirstName(response.data[0].firstName)
+     console.log(response.data[0].firstName)
+      localStorage.setItem('name',response.data[0].firstName);
+      localStorage.setItem('loggedIn','true');
+      localStorage.setItem('email',email);
+      navigate('/')
+   console.log('nav')
+   window.location.reload(false);
+    }}).catch(error=>{
+      console.log(error.response)
+    })
+ 
+}
 
   return (
     <ThemeProvider theme={theme}>
@@ -63,9 +82,9 @@ export default function SignIn() {
             
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Sign in 
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -75,6 +94,7 @@ export default function SignIn() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e)=>{setEmail(e.target.value)}}
               />
               <TextField
                 margin="normal"
@@ -85,17 +105,20 @@ export default function SignIn() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
+               onChange={(e)=>{setPass(e.target.value)}}
+               /> 
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
+              
               <Button
-                type="submit"
+                
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                
+               onClick={signInClient}
+            
               >
                 Sign In
               </Button>
@@ -112,8 +135,14 @@ export default function SignIn() {
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
+               
               </Grid>
+              <Grid item xs>
+                  <Link href="/tourguide" variant="body2">
+                    Tour Guide 
+                  </Link>
              
+                </Grid>
             </Box>
           </Box>
         </Grid>

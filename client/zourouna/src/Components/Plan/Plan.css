@@ -1,26 +1,19 @@
 .MyVillages{
-    width: 50%;
-    height:auto;
+    flex:9;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    flex-flow: wrap;
-    justify-content:space-between;
-    align-items: center;
-    align-content: center;
-    align-items:stretch;
-    box-sizing: border-box;
-    position: relative;
-    top: 20%;
+    margin:20px;
+
 }
 .plan{
     font-family:"Georgia";
     font-size:30px;
-    width: 23px;
     height:300px;
     border-radius: 20px;
-    margin: 10px;
     padding: 20px;
+    width:350px;
+    margin:15px 25px 40px 25px;
+    
 }
 
 
@@ -32,24 +25,7 @@
     font-size:150%;
 }
 
-.imageee{
-    width:100%;
-    height: 100px;
-    resize: horizontal;
-}
 
-.Activities{
-    position: absolute;
-    width: 30%;
-    top: 10%;
-    left: 75%
-}
 
-.Activitie_Word{
-    width:50%;
-    color: brown;
-}
 
-.list_of_activities{
-    width:50%;
-}
+

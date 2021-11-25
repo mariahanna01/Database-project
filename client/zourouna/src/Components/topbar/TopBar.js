@@ -1,15 +1,21 @@
 
-import React from'react'
+import React, { useState,useEffect } from'react'
 import "./topbar.css"
 import { Link} from 'react-router-dom'
+import{useNavigate} from 'react-router-dom'
+export default function TopBar (props){
 
-export default class TopBar extends React.Component{
+ const [firstName,setFirstName]=useState('');
+ const[loggedIn,setLoggedIn]=useState('');
+ const navigate=useNavigate();
+const signOut=()=>{
+localStorage.clear();
+navigate('/');
+    window.location.reload(false);
+}
 
-    constructor(props){
-super(props)
 
-    }
-    render(){
+    
     return(
         
         <div className= 'top'>
@@ -33,9 +39,12 @@ super(props)
                     <Link to="/contact" style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">CONTACT</li>
                     </Link>
-                    {this.props.signIn==='false'?  <Link to="/signin"style={{ textDecoration: 'none' ,color:'black'}}>
+                    {props.signIn=='true'?  <Link to="/MYFAVORITE"style={{ textDecoration: 'none' ,color:'black'}}>
+                    <li className="topListItem">MY FAVORITES</li>
+                    </Link> : null }
+                    {props.signIn!='true'?  <Link to="/signin"style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">SIGN IN</li>
-                    </Link> :  <Link to="/" style={{ textDecoration: 'none' ,color:'black'}}>
+                    </Link> :  <Link to="/" style={{ textDecoration: 'none' ,color:'black'}} onClick={signOut}>
                     <li className="topListItem">SIGN OUT</li>
                     </Link> }
                    
@@ -50,12 +59,11 @@ super(props)
                 alt="" 
                 />
                 <i className="topSearchIcon fas fa-search-location"></i>
-{this.props.signIn==='true'? <h2 className="welcome">Welcome, {this.props.firstName} </h2> : null }
-                
+{props.name!=null ?<h2 className="welcome">Welcome, {props.name} </h2> : null }
+
             </div>
 
         </div>
        
     )
-}
 }

@@ -1,0 +1,17 @@
+.Calendar{
+    position: relative;
+    top: 450px;
+    left: 5%;
+    size: 100%;
+}
+
+.Planning{
+    position: relative;
+    top: -300px;
+}
+
+.date{
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
