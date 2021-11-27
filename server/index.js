@@ -12,8 +12,8 @@ app.use(cors());
      host:"localhost",
      password:"Paradise2001mh.",
      database:"zourounadatabase",
-     
- });
+     multipleStatements: true
+ },);
  
  
 app.post("/create",(req,res)=> {
@@ -33,36 +33,34 @@ bcrypt.hash(password,saltRounds,(err,hash)=>{
     }
     );
 })
-app.post("/rating",(req,res)=> {
-    console.log(req.body);
-const email=req.body.email;
-const village=req.body.village;
-const rating=req.body.rating;
-const idclients=0;
-const idvillage=0;
-db.query("SELECT idclients FROM clients WHERE email=? ",[email],(err,result)=>{
-    if(result){
-idclients=result;
-console.log(result)
-    }
-})
-db.query("SELECT idvillage FROM village WHERE villageName=? ",[village],(err,result)=>{
-    if(result){
-idvillage=result;
-    }
+
+    
 })
 
-    db.query("INSERT INTO clientvillagerating(idclients,idVillage,rating) VALUES(?,?,?)",
-    [idclients,idvillage,rating],(err)=> {
+app.post("/rating",(req,res)=> {
+    console.log(req.body);
+const email=req.body.email
+const village=req.body.village;
+const rating=req.body.rating;
+
+
+    db.query("INSERT INTO clientvillagerating(idclients,idvillage,rating) VALUES( (SELECT idclients FROM clients WHERE email=?),   (SELECT idvillage FROM village WHERE villageName=?),?)",
+       
+ [email,village,rating]
+    ,
+ (err)=> {
       if(err){
-          alert('there is an error')
+         console.log(err)
       }
        }
     
     );
 })
-    
-});
+
+
+
+
+
 app.post("/addPlan",(req,res)=> {
     console.log(req.body);
 const villageName=req.body.villageName;
@@ -86,7 +84,37 @@ const description=req.body.description;
     );
 })
     
+app.post("/additemfavorite",(req,res)=> {
+    console.log(req.body);
+const email=req.body.email;
+const message=req.body.message;
 
+    db.query("INSERT INTO favorite(idclients,description) VALUES( (SELECT idclients FROM clients WHERE email=?),?)",
+    [email,message],(err)=> {
+       if(err){
+          console.log(err)
+       }else{
+           console.log('succes')
+       }
+    }
+    );
+})
+
+app.post("/deleteitemfavorite",(req,res)=> {
+    console.log(req.body);
+const email=req.body.email;
+const message=req.body.message;
+
+    db.query("DELETE from favorite(idclients,description) VALUES( (SELECT idclients FROM clients WHERE email=?),?)",
+    [email,message],(err)=> {
+       if(err){
+          console.log(err)
+       }else{
+           console.log('succes')
+       }
+    }
+    );
+})
 
 app.post("/signInClient",(req,res)=>{
     const email=req.body.email;
@@ -108,6 +136,7 @@ console.log(result)
         
     });
 })
+
 app.post("/signInTourGuide", (req, res) => {
     const email=req.body.email;
     const password=req.body.password;

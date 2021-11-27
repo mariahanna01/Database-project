@@ -14,40 +14,36 @@ const getLocalStorage = () => {
 };
 
 function Favorite() {
+  const [email,setEmail]=useState(localStorage.getItem('email'));
 
+  const addfavorite=()=>{
+
+    Axios.post('http://localhost:3050/favorite',{
+      email:email,
+      message:name,
+    }).then((response)=>{
+      if(response.data){
+      
+      }}).catch(error=>{
+        console.log(error.response)
+      })
+   
+  }
     
-  const[todo,settodo] = useState("");
+  const deleteoneitem=()=>{
 
-  const addtolist = () =>{
-      settodo("NEW")
-      Axios.post("http://localhost:3001/create",{
-      todo: todo,
-        }).then(() => {
-            console.log(todo);
-      console.log("success");
-        });
-    };
-
-    const clearAll = () =>{
-        settodo("NULL")
-        Axios.post("http://localhost:3001/create",{
-        todo: todo,
-          }).then(() => {
-              console.log(todo);
-        console.log("success");
-          });
-      };
-
-      const removewish = () =>{
-        settodo("remove")
-        Axios.post("http://localhost:3001/create",{
-        todo: todo,
-          }).then(() => {
-              console.log(todo);
-        console.log("success");
-          });
-      };
-
+    Axios.post('http://localhost:3050/deleteitemfavorite',{
+      email:email,
+      message:name,
+    }).then((response)=>{
+      if(response.data){
+      
+      }}).catch(error=>{
+        console.log(error.response)
+      })
+   
+  }
+ 
   const [name, setName] = useState("");
   const [list, setList] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
@@ -107,7 +103,7 @@ function Favorite() {
         <h3>My Favorites</h3>
         <div className="form-control">
           <input type="text" className="grocery" placeholder="Input the plans you still want to try" value={name} onChange={(e) => setName(e.target.value)} />
-          <button type="submit" onClick={addtolist} className="submit-btn">
+          <button type="submit" onClick={addfavorite} className="submit-btn">
             {isEditing ? "edit" : "Submit!"}
           </button>
         </div>
@@ -115,7 +111,7 @@ function Favorite() {
       {list.length > 0 && (
         <div className="grocery-container">
           <List items={list} removeItem={removeItem} editItem={editItem} />
-          <button className="clear-btn" onClick={clearAll,clearList}>
+          <button className="clear-btn" onClick={deleteoneitem}>
             clear items
           </button>
         </div>

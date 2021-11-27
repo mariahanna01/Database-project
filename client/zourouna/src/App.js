@@ -6,7 +6,7 @@ import {About} from './Components/About/About';
 import Contact from './Components/Contact/Contact';
 import SignIn from './Components/SignIn/SignIn'; 
 
-import {Plan} from './Components/Plan/Plan';
+import Plan from './Components/Plan/Plan';
 import Axios  from 'axios';
 import Header from './Components/header/Header';
 import Favorite from './Components/Favorite/Favorite';
@@ -16,6 +16,12 @@ import TourGuideView from './Components/TourGuideView/TourGuideView';
 import TourGuideViewSignIn from './Components/TourGuideView/TourGuideViewSignIn';
 import AddPlan from './Components/TourGuideView/AddPlan/AddPlan';
 import Plan1Batroun from './Components/PlansForVillages/Village1/Plan1Batroun';
+import PlansVillage1 from './Components/Plans/PlansVillage1';
+import PlansVillage2 from './Components/Plans/PlansVillage2';
+import PlansVillage3 from './Components/Plans/PlansVillage3';
+import PlansVillage4 from './Components/Plans/PlansVillage4';
+import PlansVillage5 from './Components/Plans/PlansVillage5';
+import PlansVillage6 from './Components/Plans/PlansVillage6';
 function App() {
   const [firstName,setFirstName]= useState('')
   const[signIn,setSignIn]= useState('')
@@ -38,9 +44,15 @@ useEffect(()=>{
 <Route path="/villages" element={<Villages/>} />
 <Route path="/about"  element={<About/>}/>
 <Route path="/contact"  element={<Contact/>}/>
+<Route path="/contact1"  element={<Contact/>}/>
 <Route path="/signin" 
  element={<SignIn/>} /> 
-<Route path="/village1" element={<Plan/>}/>
+<Route path="/village1" element={<PlansVillage1/>}/>
+<Route path="/village2" element={<PlansVillage2/>}/>
+<Route path="/village3" element={<PlansVillage3/>}/>
+<Route path="/village4" element={<PlansVillage4/>}/>
+<Route path="/village5" element={<PlansVillage5/>}/>
+<Route path="/village6" element={<PlansVillage6/>}/>
 <Route path="/plan1" element={<SignIn />}/>
 <Route path="/plan1Batroun" element={<Plan1Batroun/>}/>
 <Route path="/signup" element={<SignUp/>}/>

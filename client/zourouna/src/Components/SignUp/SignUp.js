@@ -37,7 +37,7 @@ export default function SignUp() {
     )
     localStorage.setItem('name',firstName);
     localStorage.setItem('loggedIn','true');
-    
+    localStorage.setItem('email',email);
     navigate('/')
  console.log('nav')
  window.location.reload(false);

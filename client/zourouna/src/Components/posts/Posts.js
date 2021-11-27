@@ -9,6 +9,7 @@ export default function Posts()  {
     return (
         
         <div className="MyPosts">
+           
             <div className='post'>
                     
                     
@@ -38,7 +39,7 @@ export default function Posts()  {
 
 
                 <div className='rating'>
-                    <Rating signIn={localStorage.getItem('loggedIn')} name={localStorage.getItem('email')} village="Zahle"  />
+                <Rating signIn={localStorage.getItem('loggedIn')} email={localStorage.getItem('email')} village="Zahle"  />
                 </div>
                 </div>   
             
@@ -57,8 +58,10 @@ export default function Posts()  {
                     <span className='postcat'>Rashaya al-Wadi</span>
                 
                 </div>
-                    <span className="postTitle">Rashaya
-                    </span>
+                <Link to="/village2" style={{ textDecoration: 'none' ,color:'black'}}>
+                        <span className="postTitle">Rashaya
+                        </span>
+                        </Link>
                     <hr/>
                     
             </div> 
@@ -71,7 +74,7 @@ export default function Posts()  {
 
 
                     <div className='rating'>
-                    <Rating/>
+       
                 </div>
                 
                 </div>
@@ -89,8 +92,10 @@ export default function Posts()  {
                     <span className='postcat'>Maaser El Chouf</span>
                 
                 </div>
-                    <span className="postTitle">Chouf
-                    </span>
+                <Link to="/village3" style={{ textDecoration: 'none' ,color:'black'}}>
+                        <span className="postTitle">Chouf
+                        </span>
+                        </Link>
                     <hr/>
                       
             </div> 
@@ -101,7 +106,7 @@ export default function Posts()  {
 
                     </p>
                     <div className='rating'>
-                    <Rating/>
+                    
                 </div>
                 
                 
@@ -123,8 +128,10 @@ export default function Posts()  {
                     <span className='postcat'>Ghadir</span>
                 
                 </div>
-                    <span className="postTitle">Mount Lebanon
-                    </span>
+                <Link to="/village4" style={{ textDecoration: 'none' ,color:'black'}}>
+                        <span className="postTitle">Mount Lebanon
+                        </span>
+                        </Link>
                     <hr/>
                      
             </div> 
@@ -135,7 +142,7 @@ export default function Posts()  {
                     </p>
 
                     <div className='rating'>
-                    <Rating/>
+                  
                 </div>
             </div>   
 
@@ -153,8 +160,10 @@ export default function Posts()  {
                     <span className='postcat'>Bsharri</span>
                 
                 </div>
-                    <span className="postTitle">North Governorate
-                    </span>
+                <Link to="/village5" style={{ textDecoration: 'none' ,color:'black'}}>
+                        <span className="postTitle">North Governorate
+                        </span>
+                        </Link>
                     <hr/>
                      
             </div> 
@@ -163,7 +172,7 @@ export default function Posts()  {
                     heart of a majestic and fierce nature. The village, with a rather urban character.
                     </p>
                     <div className='rating'>
-                    <Rating/>
+                
                 </div>
                 
                 </div>
@@ -181,8 +190,10 @@ export default function Posts()  {
                     <span className='postcat'>Ehden</span>
                 
                 </div>
-                    <span className="postTitle">Zgharta District
-                    </span>
+                <Link to="/village6" style={{ textDecoration: 'none' ,color:'black'}}>
+                        <span className="postTitle">Zgharta District
+                        </span>
+                        </Link>
                     <hr/>
                     
             </div> 
@@ -192,7 +203,7 @@ export default function Posts()  {
 
                     </p>
                     <div className='rating'>
-                    <Rating/>
+                
                 </div>
                 
                 </div>

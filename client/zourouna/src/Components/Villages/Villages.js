@@ -10,10 +10,9 @@ export default function Villages (){
             <>
             
             <div className='post'>
+            
                
-               
-
-               <Posts/>  
+<Posts/>
             </div> 
 
            
