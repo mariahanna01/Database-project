@@ -34,6 +34,8 @@ export default function TourGuideViewSignIn() {
      console.log(response.data[0].firstName)
       localStorage.setItem('name',response.data[0].firstName);
       localStorage.setItem('loggedIn','true');
+      localStorage.setItem('user', 'guide')
+      localStorage.setItem('email', email)
       navigate('/tourguideView')
    console.log('nav')
    window.location.reload(false);

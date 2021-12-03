@@ -1,0 +1,16 @@
+.planName{
+    font-size: 20px;
+    font-weight: bold;
+}
+.mainplan{
+  display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: row;
+ width:100%;
+
+  
+}
+.eachPlan{
+    margin: 10px 10px 10px 10px;
+}

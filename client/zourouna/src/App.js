@@ -22,6 +22,8 @@ import PlansVillage3 from './Components/Plans/PlansVillage3';
 import PlansVillage4 from './Components/Plans/PlansVillage4';
 import PlansVillage5 from './Components/Plans/PlansVillage5';
 import PlansVillage6 from './Components/Plans/PlansVillage6';
+import EditPlan from './Components/TourGuideView/EditPlan/EditPlan';
+import Booked from './Components/TourGuideView/BookedPlans/Booked';
 function App() {
   const [firstName,setFirstName]= useState('')
   const[signIn,setSignIn]= useState('')
@@ -37,7 +39,7 @@ useEffect(()=>{
   return (
     <Router>
        <div className="App">
-      {localStorage.getItem('name')!='null' ? <TopBar signIn={localStorage.getItem('loggedIn')} name={localStorage.getItem('name')}/> : <TopBar  name={localStorage.getItem('name')}/>}
+      {localStorage.getItem('name')!='null' ? <TopBar signIn={localStorage.getItem('loggedIn')} name={localStorage.getItem('name')} user={localStorage.getItem('user')}/> : <TopBar  name={localStorage.getItem('name')} user={localStorage.getItem('user')}/>}
       
       <Routes>
         <Route exact path="/" element={<Header/>}/>
@@ -60,7 +62,8 @@ useEffect(()=>{
 <Route path='tourguideView' element={<TourGuideView/>}/>
 <Route path= '/addPlan' element={<AddPlan/>}/>
 <Route path= '/MYFAVORITE' element={<Favorite/>}/>
-
+<Route path='tourguideView/editplan' element={<EditPlan/>}/>
+<Route path='/booked' element={<Booked/>}/>
    </Routes> 
     </div>
     </Router>

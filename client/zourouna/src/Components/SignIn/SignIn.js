@@ -30,21 +30,25 @@ export default function SignIn() {
 
 
  const signInClient=()=>{
+   
 
-  Axios.post('http://localhost:3050/signInClient',{
+  Axios.post('http://localhost:3050/signInClientApp',{
     email:email,
     password:password
   }).then((response)=>{
     if(response.data){
+      console.log('pressed')
      setFirstName(response.data[0].firstName)
      console.log(response.data[0].firstName)
       localStorage.setItem('name',response.data[0].firstName);
       localStorage.setItem('loggedIn','true');
       localStorage.setItem('email',email);
+      localStorage.setItem('user','client')
       navigate('/')
    console.log('nav')
    window.location.reload(false);
-    }}).catch(error=>{
+    }}).catch((error)=>{
+      
       console.log(error.response)
     })
  

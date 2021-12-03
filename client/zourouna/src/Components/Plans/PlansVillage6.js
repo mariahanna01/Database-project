@@ -1,14 +1,52 @@
-import React from 'react'
+import {React, useState,useEffect} from 'react';
 import Plan from '../Plan/Plan'
 import './Plans.css'
-
+import Axios from 'axios'
 export default function PlansVillage6() {
+const plansToGet=()=>{
+    
+    Axios.post('http://localhost:3050/planToGet',{
+       villageName:'Ehden'
+      }).then((response)=>{
+        if(response.data){
+       setPlans(response.data)
+        
+        }}).catch(error=>{
+          console.log(error.response)
+        })
+     
+    }
+ 
+
+
+const [plans,setPlans]=useState([]);
+useEffect(()=>{
+    plansToGet()
+}
+
+)
     return (
         
         <div className="main2karen">
-            <Plan imageUrl="https://i.redd.it/1elm97cfr5831.jpg"  planTitle='Plan1' capacity='15 bitches'  price='69 dollar mapi' nbOfDays='1'  />   
-            <Plan imageUrl='https://i.redd.it/1elm97cfr5831.jpg'  planTitle='Plan2' capacity='2 whores'  price='1 lbp' nbOfDays='-90'  />   
-            <Plan imageUrl='https://i.redd.it/1elm97cfr5831.jpg'  planTitle='Plan3' capacity='1'  price='3' nbOfDays='4' />   
+         
+
+         {plans.map((plan,key)=>{
+ return (
+    
+   <Plan villageName={plan.villageName} planName={plan.planName} capacity={plan.capacity} age={plan.age} price={plan.price} days={plan.days} pictureurl={plan.pictureurl} description={plan.description} idtourguide={plan.idtourguide}/>
+  
+
+ )
+          }
+
+          )}
+            
+           
+            
+           
+           
+               
+            
 
         </div>
         

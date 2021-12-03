@@ -1,7 +1,8 @@
 import React from 'react'
 import './posts.css'
-import Rating from "../Rating/Rating"
+import RatingComponent from "../Rating/RatingComponent"
 import { Link } from 'react-router-dom'
+import RatingReadOnly from '../Rating/RatingReadOnly'
 export default function Posts()  {
 
 
@@ -24,7 +25,7 @@ export default function Posts()  {
                         <span className='postcat'>Zahle</span>
                     
                     </div>
-                    <Link to="/village1" style={{ textDecoration: 'none' ,color:'black'}}>
+                    <Link to="/village1"  style={{ textDecoration: 'none' ,color:'black'}}>
                         <span className="postTitle">Beqaa Governorate
                         </span>
                         </Link>
@@ -35,11 +36,11 @@ export default function Posts()  {
                         foothills of Mount Sannine, Zahlé enjoys a prime location in the Beqaa 
                         valley. 
                         </p>
-
+{localStorage.getItem('loggedIn')=='true'?<p className="postDescription"> Add a rating to the village you visited below: </p>:null}
 
 
                 <div className='rating'>
-                <Rating signIn={localStorage.getItem('loggedIn')} email={localStorage.getItem('email')} village="Zahle"  />
+              {localStorage.getItem('loggedIn')!='true'?<RatingReadOnly village='Zahle'/>:<RatingComponent village='Zahle'/>}
                 </div>
                 </div>   
             
@@ -70,11 +71,11 @@ export default function Posts()  {
                     huge olive trees and were informed that the village was also known for its olive 
                     oil production.
                     </p>
-
+                    {localStorage.getItem('loggedIn')=='true'?<p className="postDescription"> Add a rating to the village you visited below: </p>:null}
 
 
                     <div className='rating'>
-       
+                    {localStorage.getItem('loggedIn')!='true'?<RatingReadOnly village= 'Rashaya al-Wadi'/>:<RatingComponent village='Rashaya Al-Wadi'/>}
                 </div>
                 
                 </div>
@@ -105,8 +106,9 @@ export default function Posts()  {
                     the Mediterranean Sea.
 
                     </p>
+                    {localStorage.getItem('loggedIn')=='true'?<p className="postDescription"> Add a rating to the village you visited below: </p>:null}
                     <div className='rating'>
-                    
+                    {localStorage.getItem('loggedIn')!='true'?<RatingReadOnly village= "Maaser El Chouf"/>:<RatingComponent village='Maaser El Chouf'/>}
                 </div>
                 
                 
@@ -140,9 +142,9 @@ export default function Posts()  {
                     dwellings, markedly different to the other houses around by reason both
                     of their architecture and their size.
                     </p>
-
+                    {localStorage.getItem('loggedIn')=='true'?<p className="postDescription"> Add a rating to the village you visited below: </p>:null}
                     <div className='rating'>
-                  
+                    {localStorage.getItem('loggedIn')!='true'?<RatingReadOnly village="Ghadir"/>:<RatingComponent village='Ghadir'/>}
                 </div>
             </div>   
 
@@ -171,8 +173,9 @@ export default function Posts()  {
                     was exploited in antiquity, Bcharre rises to 1400m in North Lebanon, in the
                     heart of a majestic and fierce nature. The village, with a rather urban character.
                     </p>
+                    {localStorage.getItem('loggedIn')=='true'?<p className="postDescription"> Add a rating to the village you visited below: </p>:null}
                     <div className='rating'>
-                
+                    {localStorage.getItem('loggedIn')!='true'?<RatingReadOnly village="Bsharri"/>:<RatingComponent village='Bsharri'/>}
                 </div>
                 
                 </div>
@@ -202,8 +205,9 @@ export default function Posts()  {
                     Midane  and its old souk,perfect for walks and discovery.
 
                     </p>
+                    {localStorage.getItem('loggedIn')=='true'?<p className="postDescription"> Add a rating to the village you visited below: </p>:null}
                     <div className='rating'>
-                
+                    {localStorage.getItem('loggedIn')!='true'?<RatingReadOnly village="Ehden"/>:<RatingComponent village='Ehden'/>}
                 </div>
                 
                 </div>

@@ -30,16 +30,17 @@ navigate('/');
             </div>
             <div className="topCenter">
                 <ul className="topList">
-                <Link to="/villages" style={{ textDecoration: 'none' ,color:'black'}}>
+                    {props.user=='client'||  localStorage.getItem('name')===null ? <Link to="/villages" style={{ textDecoration: 'none' ,color:'black'}}>
                 <li className="topListItem"> VILLAGES</li>
-                </Link>
-                <Link to="/about"style={{ textDecoration: 'none' ,color:'black'}}>
+                </Link> : null}
+                {props.user=='client' || localStorage.getItem('name')===null  ? <Link to="/about"style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">ABOUT</li>
-                    </Link>
-                    <Link to="/contact" style={{ textDecoration: 'none' ,color:'black'}}>
+                    </Link>:null }
+                {props.user=='client' || localStorage.getItem('name')===null  ?  <Link to="/contact" style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">CONTACT</li>
-                    </Link>
-                    {props.signIn=='true'?  <Link to="/MYFAVORITE"style={{ textDecoration: 'none' ,color:'black'}}>
+                    </Link>:null}
+                   
+                    {props.signIn=='true' && props.user=='client'?  <Link to="/MYFAVORITE"style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">MY FAVORITES</li>
                     </Link> : null }
                     {props.signIn!='true'?  <Link to="/signin"style={{ textDecoration: 'none' ,color:'black'}}>

@@ -8,7 +8,12 @@ export default function TourGuideView(){
 const addPlan=()=>{
 navigate('/addPlan')
 }
-
+const editPlan=()=>{
+  navigate('editplan')
+}
+const booked=()=>{
+  navigate('/booked')
+}
 
 return(
 <div className='big'>
@@ -30,7 +35,7 @@ return(
   <Card.Body>
     <Card.Title>Click below to edit a plan  </Card.Title>
     
-    <Button variant="primary">Edit </Button>
+    <Button variant="primary" onClick={editPlan}>Edit </Button>
   </Card.Body>
 
 </Card>
@@ -42,7 +47,7 @@ return(
   <Card.Body>
     <Card.Title>Click below to check your booked plans </Card.Title>
     
-    <Button variant="primary"> Check </Button>
+    <Button variant="primary" onClick={booked}> Check </Button>
   </Card.Body>
 
 </Card>
