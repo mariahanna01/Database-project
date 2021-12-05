@@ -20,6 +20,20 @@ const getAvg=()=>{
          })
       
      }
+
+  const sendAvgRating=()=>{
+    Axios.post('http://localhost:3050/sendAvgRating',{
+        villageName:villageName,
+        value:value
+       }).then((response)=>{
+         if(response.data){
+             
+
+         
+         }}).catch(error=>{
+           console.log(error.response)
+         })  
+  }   
  useEffect(()=>{
      getAvg()
  })

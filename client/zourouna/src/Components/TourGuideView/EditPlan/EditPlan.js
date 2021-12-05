@@ -52,7 +52,7 @@ useEffect(()=>{
     <p className="planName" >{plan.planName}</p> 
     <Form.Control type="text" placeholder="Plan Name"className='input' value={plan.planName}  onChange={(e)=>setPlan(e.target.value)}/>
     
-<Form.Control type="text" placeholder="Capacity"className='input' defaultValue={plan.capacity} onChange={(e)=>setCapacity(e.target.value)} />
+<Form.Control type="text" placeholder="Capacity"className='input' defaultValue={plan.capacity} onChange={(e)=>{setCapacity(e.target.value); console.log(capacity) }} />
 <Form.Control type="text" placeholder="Age"className='input' defaultValue={plan.age} onChange={(e)=>setAge(e.target.value)} />
 <Form.Control type="text" placeholder="Price/pers L.L"className='input' defaultValue ={plan.price} onChange={(e)=>setPrice(e.target.value)} /> 
 <Form.Control type="text" placeholder="Amount of days"className='input' defaultValue={plan.days} onChange={(e)=>setDays(e.target.value)} />
@@ -69,6 +69,7 @@ useEffect(()=>{
     <Button as="input" type="submit" value="Edit" className='input'
     onClick={
 ()=>{
+  console.log(capacity)
   Axios.post('http://localhost:3050/editPlan',{
   planName:plan.planName,
   capacity:capacity,
@@ -80,7 +81,7 @@ useEffect(()=>{
   pictureurl:pictureUrl
 }).then(
   console.log('success')
-  
+ 
   
   ).catch((err)=>console.log(err))
   

@@ -24,6 +24,7 @@ import PlansVillage5 from './Components/Plans/PlansVillage5';
 import PlansVillage6 from './Components/Plans/PlansVillage6';
 import EditPlan from './Components/TourGuideView/EditPlan/EditPlan';
 import Booked from './Components/TourGuideView/BookedPlans/Booked';
+import Rewards from './Components/Rewards/Rewards';
 function App() {
   const [firstName,setFirstName]= useState('')
   const[signIn,setSignIn]= useState('')
@@ -64,6 +65,7 @@ useEffect(()=>{
 <Route path= '/MYFAVORITE' element={<Favorite/>}/>
 <Route path='tourguideView/editplan' element={<EditPlan/>}/>
 <Route path='/booked' element={<Booked/>}/>
+<Route path='/rewards' element={<Rewards/>}/>
    </Routes> 
     </div>
     </Router>

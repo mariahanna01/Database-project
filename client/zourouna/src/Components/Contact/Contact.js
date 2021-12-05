@@ -1,9 +1,16 @@
 import emailjs from 'emailjs-com';
-import React from "react";
+import {React,useState} from "react";
 import form from 'react-bootstrap/Form';
+import{useNavigate} from 'react-router-dom'
+import Modal from 'react-bootstrap/Modal'
+import './Contact.css'
+import Button from 'react-bootstrap/Button'
 
 export default function Contact() {
-    
+    const [show, setShow] = useState(false);
+
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
     function sendEmail(e){
         e.preventDefault();
 
@@ -14,20 +21,46 @@ export default function Contact() {
               console.log(error.text);
           });
           e.target.reset();
+          handleShow()
     }
 
 
         return (
-        <div>
+        <div className="contact">
             <form ref={form} onSubmit={sendEmail}>
-                <label>Name</label>
-                <input type="text" name="name" />
-                <label>Email</label>
-                <input type="email" name="email" />
-                <label>Message</label>
-                <textarea name="message" />
-                <input type="submit" value="Send" />
+                <div className="inputcontact">
+                <label className="labels">Name</label>
+                <input type="text" name="name" className= 'input'/>
+                <br/>
+                </div>
+                <div className="inputcontact">
+                <label  className="labels">Email</label>
+                <input type="email" name="email" className= 'input'/>
+                <br/>
+                </div>
+                <div className="inputcontact">
+                <label  className="labels">Message</label>
+                <textarea name="message" className= 'input' />
+                <br/>
+                </div>
+                <div className="inputcontact">
+                <Button as="input" type="submit" value="Send" />
+                </div>
             </form>
+
+
+            <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title> Thank you for sending us a message! </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>The HR department will contact you very soon with your concerns</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        
+        </Modal.Footer>
+      </Modal>
         </div>
   );
     

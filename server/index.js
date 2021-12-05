@@ -22,21 +22,56 @@ const firstName=req.body.firstName;
 const lastName=req.body.lastName;
 const email=req.body.email;
 const password=req.body.password;
-
+const points=req.body.points;
 bcrypt.hash(password,saltRounds,(err,hash)=>{
+db.query("SELECT COUNT(*) AS number FROM clients WHERE email=?",[email],(err1,result1)=>{
 
-    db.query("INSERT INTO clients(firstName,lastName,email,password) VALUES(?,?,?,?)",
-    [firstName,lastName,email,hash],(err)=> {
-       if(err){
-           alert('Fill in ')
-       }
+    
+
+
+
+        db.query("INSERT INTO clients(firstName,lastName,email,password,points) VALUES(?,?,?,?,?)",
+        [firstName,lastName,email,hash,points],(err)=> {
+           if(err){
+              res.send("fi error brooo")
+           }
+        }
+        )
+
+    
+        
+       
     }
-    );
+)
+
+
+   
 })
 
     
 })
 
+app.post("/checkEmail",(req,res)=>{
+    const email=req.body.email
+    
+
+    db.query("SELECT COUNT(*) AS number FROM clients WHERE email=? ",[email],(err,result)=>{
+        if(err){
+            res.send({err:err})
+        }
+            if(result){
+                console.log(result)
+                res.send(result)
+
+              
+                
+            }else{
+                res.send({message:"user not found"})
+            }
+            
+        
+    });
+})
 
 
 
@@ -46,6 +81,7 @@ app.post("/addPlan",(req,res)=> {
     console.log(req.body);
 const villageName=req.body.villageName;
 const planName=req.body.planName;
+const date=req.body.date;
 const capacity=req.body.capacity;
 const age=req.body.age;
 const price=req.body.price;
@@ -53,10 +89,10 @@ const days=req.body.days;
 const description=req.body.description;
 const email=req.body.tourguidemail;
 const pictureurl=req.body.pictureurl;
+console.log(req.body)
 
-
-    db.query("INSERT INTO plan(villageName,planName,capacity,age,price,days,pictureurl,description,idtourguide) VALUES(?,?,?,?,?,?,?,?,(SELECT idtourguide FROM tourguide WHERE email=? ))",
-    [villageName,planName,capacity,age,price,days,pictureurl,description,email],(err)=> {
+    db.query("INSERT INTO plan(villageName,planName,date,capacity,age,price,days,pictureurl,description,idtourguide) VALUES(?,?,?,?,?,?,?,?,?,(SELECT idtourguide FROM tourguide WHERE email=? ))",
+    [villageName,planName,date,capacity,age,price,days,pictureurl,description,email],(err)=> {
        if(err){
           console.log(err)
        }else{
@@ -237,20 +273,15 @@ app.post("/editPlan",(req,res)=>{
    const description=req.body.description
    const pictureurl=req.body.pictureurl
   
-
-    db.query("UPDATE plan SET capacity=?, age=? ,price=?, days=? ,desciption=? ,pictureurl=? WHERE planName=?") ,[capacity,age,price,days,description,pictureurl,planName],(err,result)=>{
+console.log(req.body)
+    db.query("UPDATE plan SET  (capacity=?, age=? ,price=?, days=? ,desciption=? ,pictureurl=?) WHERE planName=? " ,[capacity,age,price,days,description,pictureurl,planName],(err,result)=>{
         if(err){
             res.send({err:err})
         }
-            if(result){
-                res.send(result)
-
-              
-                
-            }
+            
             
         
-    };
+    });
 })
 
 
@@ -299,13 +330,13 @@ app.post("/checkPlan",(req,res)=>{
         const email=req.body.email;
       
     
-        db.query("SELECT * FROM clients JOIN booking JOIN plan ON (clients.idclients=booking.idclient  and plan.idplan=booking.idplanBooked)) ",[email],(err,result)=>{
+        db.query(" SELECT clients.firstName AS firstName,clients.lastName AS lastName,clients.email AS email,plan.planName AS planName,booking.date AS date FROM clients JOIN booking ON clients.idclients=booking.idclient JOIN plan ON plan.idplan=booking.idplanBooked WHERE plan.idtourguide=(SELECT idtourguide FROM tourguide WHERE email=?)",[email],(err,result)=>{
             if(err){
                 console.log(err)
                 res.send({err:err})
             }
                 if(result){
-                    console.log(result)
+                   
                     res.send(result)
     
                   
@@ -319,7 +350,7 @@ app.post("/checkPlan",(req,res)=>{
     app.post("/avgRating",(req,res)=>{
         const villageName=req.body.villageName;
       
-          db.query("SELECT AVG(ratingVillage) AS rating FROM clientvillagerating WHERE villageID =(SELECT idvillage FROM village WHERE villageName=?) ",[villageName],(err,result)=>{
+          db.query("SELECT AVG(ratingVillage) AS rating,villageID FROM clientvillagerating WHERE villageID =(SELECT idvillage FROM village WHERE villageName=?) ",[villageName],(err,result)=>{
               if(err){
                 console.log(err)
                   res.send({err:err})
@@ -327,6 +358,11 @@ app.post("/checkPlan",(req,res)=>{
                   if(result){
                    
                       res.send(result)
+                   console.log(result[0])
+                      db.query("UPDATE village SET rating_avg=? WHERE idVillage=? ",[result[0].rating,result[0].villageID],(error,result2)=>{
+                          if(error){console.log(error)}
+                      })
+
                           }else{
                               }
                           
@@ -359,8 +395,52 @@ app.post("/checkPlan",(req,res)=>{
               );  
     
 
+              app.post("/getpoints",(req,res)=>{
+                const email=req.body.email;
+              
+            
+                db.query("SELECT COUNT(*) AS points FROM booking WHERE idclient=(SELECT idclients FROM clients WHERE email=?)",[email],(err,result)=>{
+                    if(err){
+                        console.log(err)
+                        res.send({err:err})
+                    }
+                        if(result){
+                            console.log(result)
+                           
+                            res.send(result)
+            
+                          db.query("UPDATE clients SET points=? WHERE email=?",[result[0].points,email],(err2,resutl2)=>{
+                              if(err2){
+                                  console.log(err2)
+                              }
+                          }
+                          )
+                            
+                        }
+                        
+                    
+                });
+            })
 
-
+            app.post("/updatepoints",(req,res)=>{
+                const email=req.body.user;
+              const points=req.body.points;
+            
+                db.query("UPDATE clients SET points=? WHERE email=?",[points,email],(err,result)=>{
+                    if(err){
+                        console.log(err)
+                        res.send({err:err})
+                    }
+                        if(result){
+                            console.log(result)
+                           
+                            res.send(result)
+            
+      }
+                        
+                    
+                });
+            })
 
  app.listen(3050,() =>{ 
      console.log("running ")

@@ -16,6 +16,7 @@ import SignUp from '../SignUp/SignUp';
 import Axios  from 'axios';
 import Villages from '../Villages/Villages';
 import{useNavigate} from 'react-router-dom'
+import { color } from '@mui/system';
 
 
 const theme = createTheme();
@@ -26,8 +27,9 @@ export default function SignIn() {
    const [password,setPass]=useState('');
    const [firstName,setFirstName]=useState('');
    const [loggedIn,setLoggedIn]=useState('');
-   const navigate=useNavigate();
-
+   const navigate=useNavigate(); 
+const[message,setMessage]=useState('')
+const [points,setPoints]=useState()
 
  const signInClient=()=>{
    
@@ -47,12 +49,36 @@ export default function SignIn() {
       navigate('/')
    console.log('nav')
    window.location.reload(false);
+   getPoints()
     }}).catch((error)=>{
-      
+      setMessage('Incorrect email/password')
       console.log(error.response)
     })
  
 }
+const getPoints=()=>{
+
+  console.log(email)
+  Axios.post('http://localhost:3050/getPoints',{
+email:email
+}).then((response)=>{
+  if(response.data){
+
+
+localStorage.setItem('points',response.data[0].points)
+  }
+
+
+ 
+  
+} ).catch((err)=>console.log(err))
+
+
+
+}
+
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -126,6 +152,7 @@ export default function SignIn() {
               >
                 Sign In
               </Button>
+              <p> {message}</p>
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">

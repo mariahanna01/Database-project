@@ -41,14 +41,17 @@ navigate('/');
                     </Link>:null}
                    
                     {props.signIn=='true' && props.user=='client'?  <Link to="/MYFAVORITE"style={{ textDecoration: 'none' ,color:'black'}}>
-                    <li className="topListItem">MY FAVORITES</li>
+                    <li className="topListItem">FAVORITES</li>
                     </Link> : null }
+                    {props.signIn=='true'&& props.user=='client'?<Link to="/rewards"style={{ textDecoration: 'none' ,color:'black'}}>
+                    <li className="topListItem">REWARDS</li>
+                    </Link>:null}
                     {props.signIn!='true'?  <Link to="/signin"style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">SIGN IN</li>
                     </Link> :  <Link to="/" style={{ textDecoration: 'none' ,color:'black'}} onClick={signOut}>
                     <li className="topListItem">SIGN OUT</li>
                     </Link> }
-                   
+                    
 
                 </ul>
             </div>

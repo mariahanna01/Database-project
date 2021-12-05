@@ -26,23 +26,57 @@ export default function SignUp() {
   const [email,setEmail]=React.useState('');
   const [password,setPassword]=React.useState('');
   const navigate=useNavigate();
+  const[number,setNumber]=useState('');
   const signUp=()=>{
+    
+    if(firstName.length!=0 && lastName.length!=0 && email.length!=0 && password.length!=0){
     Axios.post('http://localhost:3050/create',{firstName:firstName,
     lastName:lastName,
     email:email,
-    password:password}).then(
-    
-    
-    
-    )
-    localStorage.setItem('name',firstName);
+    password:password,
+    points:0
+  }).then(
+)
+checkEmail()
+const bool=localStorage.getItem('number')==0;
+console.log(bool)
+if(localStorage.getItem('number')==0){
+  console.log('fetna')
+  localStorage.setItem('name',firstName);
     localStorage.setItem('loggedIn','true');
     localStorage.setItem('email',email);
     localStorage.setItem('user', 'client')
     navigate('/')
  console.log('nav')
  window.location.reload(false);
+}else{
+  alert('Email in use')
+  localStorage.removeItem('number')
+}
+    
+   
+    }else{
+      alert('Fill in all the values!')
+      localStorage.removeItem('number')
+    }
+    localStorage.removeItem('number')
   }
+
+  const checkEmail=()=>{
+    console.log(email)
+
+    Axios.post('http://localhost:3050/checkEmail',{
+  email:email
+  }).then((response)=>{
+    if(response.data){
+  localStorage.setItem('number',response.data[0].number)
+  
+  
+
+    }
+  })
+}
+
 
 
 

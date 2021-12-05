@@ -20,6 +20,7 @@ const [capacity,setCapacity] = useState(props.capacity);
 const [age,setAge] = useState(props.age);
 const [price,setPrice] = useState(props.price);
 const [days,setDays] = useState(props.days);
+const[date,setDate]=useState(props.date);
 const [pictureurl,setPictureurl] = useState(props.pictureurl);
 const [description,setDescription] = useState(props.description);
 const[idtourguide,setIdTourGuide]=useState(props.idtourguide);
@@ -84,7 +85,13 @@ date:date
      }}).catch(error=>{
        console.log(error.response)
      })
-
+const points=localStorage.getItem('points')+1;
+localStorage.setItem('points',localStorage.getItem('points')+1)
+Axios.post('http://localhost:3050/updatePoints',{
+  
+  user:localStorage.getItem('email'),
+ points:points
+ }).then()
 
 
 
@@ -140,6 +147,7 @@ const checkPlan=()=>{
                     
                </div> 
                        <div className="postDescription"> 
+                       <p> Date: {date} </p>
                        <p>Capacity: {capacity}</p>
                        <p>Price: {price}</p>
                        <p>Tour Guide Name :{tourguideFirstName+" "+tourguideLastName}</p>

@@ -8,12 +8,15 @@ export class About extends React.Component{
             <>
             <div class="about-section">
             <h1>About Us Page</h1>
-            <p>Some text about who we are and what we do.</p>
-            <p>Resize the browser window to see that this page is responsive by the way.</p>
+            <p>Zourouna is a Lebanese organization aiming to enhance the tourism in Lebanon locally. Seeing the terrific
+                crisis the country is going through, three lebanese girls have decided to start "Zourouna" to help
+                the local tourism develop. We as lebanese need to stand by each other's side, because this land is ours.
+            </p>
+            <p></p>
             </div>
 
             <div className="forh2">
-                <h2>Our Team</h2>
+                <h2>The Team</h2>
             </div>
 
             <div class="row">

@@ -10,7 +10,7 @@ const getBookings=()=>{
        email:localStorage.getItem('email')
       }).then((response)=>{
         if(response.data){
-            console.log(response.data)
+            
       setBookings(response.data)
         
         }}).catch(error=>{
@@ -20,13 +20,14 @@ const getBookings=()=>{
     }
    
 useEffect(()=>{
-  
+getBookings()
 })
     return(
         <div>
             <h3> The following table shows the detailed bookings for the plans you created</h3>
             <Table striped bordered hover>
   <thead>
+
     <tr>
       <th>#</th>
       <th>First Name</th>
@@ -36,24 +37,30 @@ useEffect(()=>{
       <th>Date of booking</th>
     </tr>
   </thead>
+
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td colSpan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+
+  {bookings.map((booking,key)=>{
+          
+            return (
+
+             <tr>
+               <td>{key+1} </td>
+               <td>{booking.firstName}</td>
+               <td>{booking.lastName}</td>
+               <td>{booking.email}</td>
+               <td>{booking.planName}</td>
+               <td>{booking.date}</td>
+               </tr>
+             
+           
+            )
+           
+
+          }
+
+          )}
+  
   </tbody>
 </Table>
         </div>
