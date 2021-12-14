@@ -29,14 +29,18 @@ useEffect(()=>{
         
         <div className="main2karen">
          
-
          {plans.map((plan,key)=>{
- return (
-    
-   <Plan villageName={plan.villageName} planName={plan.planName} date={plan.date} capacity={plan.capacity} age={plan.age} price={plan.price} days={plan.days} pictureurl={plan.pictureurl} description={plan.description} idtourguide={plan.idtourguide}/>
-  
+           if(plan.accepted=='true'){
+            return (
 
- )
+              <Plan villageName={plan.villageName} planName={plan.planName} date={plan.date} capacity={plan.capacity} age={plan.age} price={plan.price} days={plan.days} pictureurl={plan.pictureurl} description={plan.description} idtourguide={plan.idtourguide}
+              
+              />
+             
+           
+            )
+           }
+
           }
 
           )}

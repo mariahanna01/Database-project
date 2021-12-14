@@ -3,6 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
@@ -145,7 +146,9 @@ if(localStorage.getItem('number')==0){
                   autoComplete="new-password"
                   onChange={(e)=>{setPassword(e.target.value)}}
                 />
+                <PasswordStrengthBar password={password} />
               </Grid>
+             
               <Grid item xs={12}>
                 
               </Grid>
