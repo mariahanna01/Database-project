@@ -137,10 +137,7 @@ localStorage.setItem('points',response.data[0].points)
                 autoComplete="current-password"
                onChange={(e)=>{setPass(e.target.value)}}
                /> 
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+              
               
               <Button
                 
@@ -155,8 +152,8 @@ localStorage.setItem('points',response.data[0].points)
               <p> {message}</p>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
+                <Link href="/tourguide" variant="body2">
+                    Tour Guide 
                   </Link>
              
                 </Grid>
@@ -169,10 +166,7 @@ localStorage.setItem('points',response.data[0].points)
                
               </Grid>
               <Grid item xs>
-                  <Link href="/tourguide" variant="body2">
-                    Tour Guide 
-                  </Link>
-             
+                  
                 </Grid>
             </Box>
           </Box>

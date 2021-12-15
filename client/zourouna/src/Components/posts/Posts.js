@@ -34,7 +34,8 @@ export default function Posts()  {
                 </div> 
                         <p className="postDescription"> A red-roofed town set among the eastern 
                         foothills of Mount Sannine, Zahlé enjoys a prime location in the Beqaa 
-                        valley. 
+                        valley. It is the capital of the largest city of Beqaa governerate. It is the fourth largest
+                        city in Lebanon.
                         </p>
 {localStorage.getItem('loggedIn')=='true'?<p className="postDescription"> Add a rating to the village you visited below: </p>:null}
 
@@ -120,7 +121,7 @@ export default function Posts()  {
                 <div className='post'>
                 
                 <img className="postImg" 
-                    src ='https://lh3.googleusercontent.com/-YqvQN5x5oe4/UzrlG32lc8I/AAAAAAAAC8Y/A6vLShvlWwk/s640/blogger-image-1988350524.jpg'
+                    src ='http://www.discoverlebanon.com/en/photos/data/media/10/10jounieh_ghadir.jpg'
                     alt=''
                 />
             <div className="postInfo">   
@@ -139,8 +140,7 @@ export default function Posts()  {
             </div> 
                     <p className="postDescription"> A town nestling on the western slope
                     of the mountain and overlooking the bay of Jounieh, there are two large
-                    dwellings, markedly different to the other houses around by reason both
-                    of their architecture and their size.
+                    dwellings, markedly different to the other houses around by reason.
                     </p>
                     {localStorage.getItem('loggedIn')=='true'?<p className="postDescription"> Add a rating to the village you visited below: </p>:null}
                     <div className='rating'>

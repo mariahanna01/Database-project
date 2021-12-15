@@ -20,7 +20,7 @@ export default function Header(){
     />
     <Carousel.Caption>
       <h3>Zahle</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <p>The captial and the largest city of the Beqaa Governate</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item interval={2000}>
@@ -30,8 +30,8 @@ export default function Header(){
       alt="Second slide"
     />
     <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3>Bsharri</h3>
+      <p>In the heart of Qadisha valley</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -41,8 +41,8 @@ export default function Header(){
       alt="Third slide"
     />
     <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <h3>Byblos</h3>
+      <p>Charming and laid back village</p>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

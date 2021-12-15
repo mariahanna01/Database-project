@@ -36,7 +36,7 @@ useEffect(()=>{
 })
     return(
         <div>
-           {points>5 ?<div><h3> Claim your first reward!</h3> <Button type="submit" onClick={()=>{handleShow();setButtonMessage('Claimed');setDisabled(true)}} disabled={disabled} >{buttonMessage} </Button></div>: <h3> You have no  first reward yet!</h3>}
+           {points>0 ?<div><h3> Claim your first reward!</h3> <Button type="submit" onClick={()=>{handleShow();setButtonMessage('Claimed');setDisabled(true)}} disabled={disabled} >{buttonMessage} </Button></div>: <h3> You have no  first reward yet!</h3>}
            {points>10?<div><h3> Claim your second reward!</h3> <Button type="submit"  >Claim </Button></div>: <h3> You have no  second reward yet!</h3>}
        {points>15?<div><h3> Claim your third reward!</h3> <Button type="submit"  >Claim </Button></div>: <h3> You have no third reward yet!</h3>}
 

@@ -147,12 +147,12 @@ const checkPlan=()=>{
                     
                </div> 
                        <div className="postDescription"> 
-                       <p> Date: {date} </p>
-                       <p>Capacity: {capacity}</p>
-                       <p>Price: {price}</p>
-                       <p>Tour Guide Name :{tourguideFirstName+" "+tourguideLastName}</p>
-                       <p>Tour Guide Email:{email}</p>
-                       <p>Tour Guide Contact Number: {number}</p>
+                       <p className="inputPlan"> Date: {date} </p>
+                       <p className="inputPlan">Capacity: {capacity}</p>
+                       <p className="inputPlan">Price: {price}</p>
+                       <p className="inputPlan">Tour Guide Name :{tourguideFirstName+" "+tourguideLastName}</p>
+                       <p className="inputPlan">Tour Guide Email:{email}</p>
+                       <p className="inputPlan">Tour Guide Contact Number: {number}</p>
                        </div>
  <hr/>
 <p className='description'>

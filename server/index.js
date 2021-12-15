@@ -55,7 +55,7 @@ app.post("/checkEmail",(req,res)=>{
     const email=req.body.email
     
 
-    db.query("SELECT COUNT(*) AS number FROM clients WHERE email=? ",[email],(err,result)=>{
+    db.query("SELECT COUNT(email) AS number FROM clients WHERE email=? ",[email],(err,result)=>{
         if(err){
             res.send({err:err})
         }
@@ -272,16 +272,22 @@ app.post("/editPlan",(req,res)=>{
    const days=req.body.days
    const description=req.body.description
    const pictureurl=req.body.pictureurl
-  
-console.log(req.body)
-    db.query("UPDATE plan SET  (capacity=?, age=? ,price=?, days=? ,desciption=? ,pictureurl=?) WHERE planName=? " ,[capacity,age,price,days,description,pictureurl,planName],(err,result)=>{
-        if(err){
-            res.send({err:err})
-        }
-            
-            
+   db.query("UPDATE plan SET capacity=?,age=?,price=?,days=?,description=?,pictureurl=?,accepted=? WHERE planName=?",[capacity,age,price,days,description,pictureurl,"false",planName],(err,result)=>{
+    if(err){
+        console.log(err)
+        res.send({err:err})
+    }
+        if(result){
+            console.log(result)
+           
+            res.send(result)
+
+}
         
-    });
+    
+});
+
+
 })
 
 

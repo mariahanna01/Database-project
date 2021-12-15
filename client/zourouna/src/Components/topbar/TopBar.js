@@ -40,9 +40,7 @@ navigate('/');
                     <li className="topListItem">CONTACT</li>
                     </Link>:null}
                    
-                    {props.signIn=='true' && props.user=='client'?  <Link to="/MYFAVORITE"style={{ textDecoration: 'none' ,color:'black'}}>
-                    <li className="topListItem">FAVORITES</li>
-                    </Link> : null }
+                    
                     {props.signIn=='true'&& props.user=='client'?<Link to="/rewards"style={{ textDecoration: 'none' ,color:'black'}}>
                     <li className="topListItem">REWARDS</li>
                     </Link>:null}

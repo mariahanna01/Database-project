@@ -29,7 +29,7 @@ export default function SignUp() {
   const navigate=useNavigate();
   const[number,setNumber]=useState('');
   const signUp=()=>{
-    
+    checkEmail();
     if(firstName.length!=0 && lastName.length!=0 && email.length!=0 && password.length!=0){
     Axios.post('http://localhost:3050/create',{firstName:firstName,
     lastName:lastName,
@@ -38,7 +38,7 @@ export default function SignUp() {
     points:0
   }).then(
 )
-checkEmail()
+
 const bool=localStorage.getItem('number')==0;
 console.log(bool)
 if(localStorage.getItem('number')==0){
@@ -70,6 +70,7 @@ if(localStorage.getItem('number')==0){
   email:email
   }).then((response)=>{
     if(response.data){
+      console.log(response.data[0].number)
   localStorage.setItem('number',response.data[0].number)
   
   

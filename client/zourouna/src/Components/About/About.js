@@ -1,5 +1,8 @@
 import React from "react";
 import "./About.css";
+import Maria from '../pics/mariaa.jpeg'
+import Karen from '../pics/karenn.jpeg'
+import Chloe from '../pics/chloee.jpeg'
 import { Link} from 'react-router-dom';
 
 export class About extends React.Component{
@@ -7,7 +10,7 @@ export class About extends React.Component{
         return(
             <>
             <div class="about-section">
-            <h1>About Us Page</h1>
+            <h1>About Us</h1>
             <p>Zourouna is a Lebanese organization aiming to enhance the tourism in Lebanon locally. Seeing the terrific
                 crisis the country is going through, three lebanese girls have decided to start "Zourouna" to help
                 the local tourism develop. We as lebanese need to stand by each other's side, because this land is ours.
@@ -25,7 +28,7 @@ export class About extends React.Component{
                     <h1> . </h1>
                     </div>
                         <div class="card">   
-                        <img src="https://www.lebanoninapicture.com/Prv/Images/Pages/Page_115409/batroun-lebanon-sea-water-old-house-snapshot-ph-6-5-2017-8-06-02-pm-l.jpg" alt="Chloe"/>         
+                        <img src={Chloe} alt="Chloe"/>         
             
                         <div class="container">
                             <h2>Chloe Boueri</h2>
@@ -47,7 +50,7 @@ export class About extends React.Component{
                     <h1> . </h1>
                 </div>
                         <div class="card"> 
-                        <img src="https://www.lebanoninapicture.com/Prv/Images/Pages/Page_115409/batroun-lebanon-sea-water-old-house-snapshot-ph-6-5-2017-8-06-02-pm-l.jpg" alt="Chloe"/>           
+                        <img src={Maria} alt="Chloe"/>           
                         <div class="container">
                             <h2>Maria Hanna</h2>
                             <p class="title">CEO and Founder</p>
@@ -69,7 +72,7 @@ export class About extends React.Component{
                     <h1> . </h1>
                 </div>
                         <div class="card"> 
-                        <img src="https://www.lebanoninapicture.com/Prv/Images/Pages/Page_115409/batroun-lebanon-sea-water-old-house-snapshot-ph-6-5-2017-8-06-02-pm-l.jpg" alt="Chloe"/>           
+                        <img src={Karen} alt="Chloe"/>           
                         <div class="container">
                             <h2>Karen Estephan</h2>
                             <p class="title">CEO and Founder</p>

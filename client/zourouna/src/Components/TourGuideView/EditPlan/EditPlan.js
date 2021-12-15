@@ -2,6 +2,7 @@ import {React,useState,useEffect}  from 'react';
 import Axios from 'axios'
 import Plan from '../../Plan/Plan';
 import './EditPlan.css'
+import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import { Form } from "react-bootstrap";
 
@@ -16,6 +17,9 @@ const [price,setPrice]=useState();
 const [days,setDays]=useState();
 const [description,setDes]=useState('');
 const[pictureUrl,setPictureUrl]=useState('')
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+const [show, setShow] = useState(false);
 
 const getPlans=()=>{
     Axios.post('http://localhost:3050/getPlans',{
@@ -52,11 +56,11 @@ useEffect(()=>{
     <p className="planName" >{plan.planName}</p> 
     <Form.Control type="text" placeholder="Plan Name"className='input' value={plan.planName}  onChange={(e)=>setPlan(e.target.value)}/>
     
-<Form.Control type="text" placeholder="Capacity"className='input' defaultValue={plan.capacity} onChange={(e)=>{setCapacity(e.target.value); console.log(capacity) }} />
-<Form.Control type="text" placeholder="Age"className='input' defaultValue={plan.age} onChange={(e)=>setAge(e.target.value)} />
-<Form.Control type="text" placeholder="Price/pers L.L"className='input' defaultValue ={plan.price} onChange={(e)=>setPrice(e.target.value)} /> 
-<Form.Control type="text" placeholder="Amount of days"className='input' defaultValue={plan.days} onChange={(e)=>setDays(e.target.value)} />
-<Form.Control type="text" placeholder="Picture Url"className='input'defaultValue={plan.pictureUrl} onChange={(e)=>setPictureUrl(e.target.value)} />
+<Form.Control type="text" placeholder="Capacity"className='input' defaultValue={plan.capacity} onChange={(e)=>{setCapacity(e.target.value) }} onMouseMoveCapture={(e)=>{setCapacity(e.target.value) }} />
+<Form.Control type="text" placeholder="Age"className='input' defaultValue={plan.age} onChange={(e)=>setAge(e.target.value)} onMouseMoveCapture={(e)=>setAge(e.target.value)} />
+<Form.Control type="text" placeholder="Price/pers L.L"className='input' defaultValue ={plan.price} onChange={(e)=>setPrice(e.target.value)} onMouseOverCapture={(e)=>setPrice(e.target.value)} /> 
+<Form.Control type="text" placeholder="Amount of days"className='input' defaultValue={plan.days} onChange={(e)=>setDays(e.target.value)}  onMouseOverCapture={(e)=>setDays(e.target.value)}/>
+<Form.Control type="text" placeholder="Picture Url"className='input'defaultValue={plan.pictureUrl} onChange={(e)=>setPictureUrl(e.target.value)} onMouseOverCapture={(e)=>setPictureUrl(e.target.value)} />
 
   <Form.Control
       as="textarea"
@@ -65,6 +69,7 @@ useEffect(()=>{
       className="area"
       onChange={(e)=>setDes(e.target.value)}
       defaultValue={plan.description}
+      onMouseOverCapture={(e)=>setDes(e.target.value)}
     />
     <Button as="input" type="submit" value="Edit" className='input'
     onClick={
@@ -80,7 +85,8 @@ useEffect(()=>{
   tourguidemail:localStorage.getItem('email'),
   pictureurl:pictureUrl
 }).then(
-  console.log('success')
+  handleShow()
+  
  
   
   ).catch((err)=>console.log(err))
@@ -103,7 +109,18 @@ useEffect(()=>{
           )}
           </div>
           
-
+          <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Plan edited! </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>The team will check your edits and will add the edited plan to the website</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        
+        </Modal.Footer>
+      </Modal>
         </div>
     )
 

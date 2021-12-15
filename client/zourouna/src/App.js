@@ -9,7 +9,6 @@ import SignIn from './Components/SignIn/SignIn';
 import Plan from './Components/Plan/Plan';
 import Axios  from 'axios';
 import Header from './Components/header/Header';
-import Favorite from './Components/Favorite/Favorite';
 import TopBar from './Components/topbar/TopBar';
 import SignUp from './Components/SignUp/SignUp';
 import TourGuideView from './Components/TourGuideView/TourGuideView';
@@ -42,7 +41,7 @@ useEffect(()=>{
        <div className="App">
       {localStorage.getItem('name')!='null' ? <TopBar signIn={localStorage.getItem('loggedIn')} name={localStorage.getItem('name')} user={localStorage.getItem('user')}/> : <TopBar  name={localStorage.getItem('name')} user={localStorage.getItem('user')}/>}
       
-      <Routes>
+      <Routes>  
         <Route exact path="/" element={<Header/>}/>
 <Route path="/villages" element={<Villages/>} />
 <Route path="/about"  element={<About/>}/>
@@ -62,7 +61,6 @@ useEffect(()=>{
 <Route path='/tourguide' element={<TourGuideViewSignIn/>}/>
 <Route path='tourguideView' element={<TourGuideView/>}/>
 <Route path= '/addPlan' element={<AddPlan/>}/>
-<Route path= '/MYFAVORITE' element={<Favorite/>}/>
 <Route path='tourguideView/editplan' element={<EditPlan/>}/>
 <Route path='/booked' element={<Booked/>}/>
 <Route path='/rewards' element={<Rewards/>}/>

@@ -70,7 +70,8 @@ body {
 
   .forh2{
     text-align: center;
-    top:30%;
+    position: relative;
+    top: 45px;
    }
 
   .forh22{
