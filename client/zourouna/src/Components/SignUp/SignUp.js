@@ -39,10 +39,10 @@ export default function SignUp() {
   }).then(
 )
 
-const bool=localStorage.getItem('number')==0;
+const bool=localStorage.getItem('number')==='0';
 console.log(bool)
-if(localStorage.getItem('number')==0){
-  console.log('fetna')
+if(bool){
+  console.log('here')
   localStorage.setItem('name',firstName);
     localStorage.setItem('loggedIn','true');
     localStorage.setItem('email',email);
@@ -51,8 +51,9 @@ if(localStorage.getItem('number')==0){
  console.log('nav')
  window.location.reload(false);
 }else{
-  alert('Email in use')
   localStorage.removeItem('number')
+  alert('Email in use')
+ 
 }
     
    
@@ -70,8 +71,9 @@ if(localStorage.getItem('number')==0){
   email:email
   }).then((response)=>{
     if(response.data){
+      localStorage.setItem('number',response.data[0].number)
       console.log(response.data[0].number)
-  localStorage.setItem('number',response.data[0].number)
+
   
   
 

@@ -26,17 +26,19 @@ const points=req.body.points;
 bcrypt.hash(password,saltRounds,(err,hash)=>{
 db.query("SELECT COUNT(*) AS number FROM clients WHERE email=?",[email],(err1,result1)=>{
 
-    
-
-
-
-        db.query("INSERT INTO clients(firstName,lastName,email,password,points) VALUES(?,?,?,?,?)",
+    if(result1[0].number==0){
+  db.query("INSERT INTO clients(firstName,lastName,email,password,points) VALUES(?,?,?,?,?)",
         [firstName,lastName,email,hash,points],(err)=> {
            if(err){
-              res.send("fi error brooo")
+              res.send("error")
            }
         }
         )
+    }
+
+
+
+      
 
     
         
@@ -55,7 +57,7 @@ app.post("/checkEmail",(req,res)=>{
     const email=req.body.email
     
 
-    db.query("SELECT COUNT(email) AS number FROM clients WHERE email=? ",[email],(err,result)=>{
+    db.query("SELECT COUNT(*) AS number FROM clients WHERE email=? ",[email],(err,result)=>{
         if(err){
             res.send({err:err})
         }
@@ -210,6 +212,8 @@ app.post("/signInTourGuide", (req, res) => {
       } if(result) {
         res.send(result);
         console.log(result)
+      }else{
+          res.json({message:"wrong email or password"})
       }
     });
   });
@@ -222,7 +226,7 @@ app.post("/signInClientApp",(req,res)=>{
     const email=req.body.email;
     const password=req.body.password;
 
-    db.query("SELECT firstName FROM clients WHERE email=? ",[email],(err,result)=>{
+    db.query("SELECT firstName,password FROM clients WHERE email=?   ",email,(err,result)=>{
         if(err){
             console.log(err)
             res.send({err:err})
@@ -230,10 +234,15 @@ app.post("/signInClientApp",(req,res)=>{
             if(result){
                 
                 bcrypt.compare(password,result[0].password,(err,response)=>{
-                    if(result){
+                    if(err){
                         
-                        res.send(result)
-                        console.log(result)
+                        
+                        console.log("error")
+                    }
+                    if(response){
+res.send(result)
+                    }else{
+res.json({message:"not matching"})
                     }
                     
                 })
